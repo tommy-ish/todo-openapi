@@ -1,0 +1,68 @@
+get:
+  tags:
+    - Tasks
+  summary: Get task by id
+  description: Get task by id
+  operationId: getTaskById
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    "404":
+      description: Task not found
+patch:
+  tags:
+    - Tasks
+  summary: Update task
+  operationId: updateTask
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+            completed:
+              type: boolean
+  responses:
+    "200":
+      description: Successfully updated the task
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
+    "404":
+      description: Task not found
+delete:
+  tags:
+    - Tasks
+  summary: Delete task
+  operationId: deleteTask
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "204":
+      description: Successfully deleted a task
+    "404":
+      description: Task not found

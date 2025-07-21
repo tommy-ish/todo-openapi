@@ -1,0 +1,32 @@
+get:
+  tags:
+    - Tasks
+  summary: Get tasks
+  operationId: getTasks
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Task.yaml
+post:
+  tags:
+    - Tasks
+  summary: Create task
+  operationId: createTask
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Task.yaml
+  responses:
+    "201":
+      description: Successfully created a task
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Task.yaml
